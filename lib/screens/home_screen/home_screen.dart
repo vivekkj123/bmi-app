@@ -1,6 +1,7 @@
 import 'package:bmi_app/screens/home_screen/widgets/age_selector.dart';
 import 'package:bmi_app/screens/home_screen/widgets/height_selector.dart';
 import 'package:bmi_app/screens/home_screen/widgets/weight_selector.dart';
+import 'package:bmi_app/screens/result_screen/result_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -39,10 +40,14 @@ class HomeScreen extends StatelessWidget {
           ),
           Material(
             color: Colors.blue[900],
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.favorite),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                  return const ResultScreen();
+                }));
+              },
+              icon: const Icon(Icons.favorite),
               color: Colors.white,
               iconSize: 40,
             ),

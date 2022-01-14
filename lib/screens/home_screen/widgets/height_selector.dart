@@ -1,3 +1,4 @@
+import 'package:bmi_app/value_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -9,7 +10,7 @@ class HeightSelector extends StatefulWidget {
 }
 
 class _HeightSelectorState extends State<HeightSelector> {
-  int _currentValue = 10;
+  int currentValue = 15;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,16 +35,18 @@ class _HeightSelectorState extends State<HeightSelector> {
                 height: 30,
               ),
               NumberPicker(
-                selectedTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40),
-                axis: Axis.horizontal,
-                value: _currentValue,
-                minValue: 10,
-                maxValue: 600,
-                onChanged: (value) => setState(() => _currentValue = value),
-              ),
+                  selectedTextStyle: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40),
+                  axis: Axis.horizontal,
+                  value: currentValue,
+                  minValue: 10,
+                  maxValue: 600,
+                  onChanged: (value) {
+                    ValueProvider().setHeight(value);
+                    setState(() => currentValue = value);
+                  }),
               const SizedBox(
                 height: 20,
               ),

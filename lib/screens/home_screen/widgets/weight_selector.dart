@@ -1,3 +1,4 @@
+import 'package:bmi_app/value_provider.dart';
 import 'package:flutter/material.dart';
 
 class WeightSelector extends StatelessWidget {
@@ -5,7 +6,8 @@ class WeightSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ValueNotifier _weight = ValueNotifier(35);
+    int _weightGlobal = ValueProvider().getWeight();
+    ValueNotifier _weight = ValueNotifier(_weightGlobal);
     return Card(
       elevation: 7,
       shape: RoundedRectangleBorder(
@@ -37,6 +39,7 @@ class WeightSelector extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     _weight.value = _weight.value - 1;
+                    ValueProvider().setWeight(_weight.value);
                   },
                   child: const Icon(Icons.remove),
                   style: ElevatedButton.styleFrom(
@@ -48,6 +51,7 @@ class WeightSelector extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     _weight.value = _weight.value + 1;
+                    ValueProvider().setWeight(_weight.value);
                   },
                   child: const Icon(Icons.add),
                   style: ElevatedButton.styleFrom(

@@ -1,3 +1,4 @@
+import 'package:bmi_app/value_provider.dart';
 import 'package:flutter/material.dart';
 
 class AgeSelector extends StatelessWidget {
@@ -5,7 +6,8 @@ class AgeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ValueNotifier _age = ValueNotifier(10);
+    int _globalAge = ValueProvider.age;
+    ValueNotifier _age = ValueNotifier(_globalAge);
     return Card(
       elevation: 7,
       shape: RoundedRectangleBorder(
@@ -27,7 +29,8 @@ class AgeSelector extends StatelessWidget {
               builder: (ctx, newValue, _) {
                 return Text(
                   newValue.toString(),
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold),
                 );
               },
             ),
@@ -37,6 +40,7 @@ class AgeSelector extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     _age.value = _age.value - 1;
+                    ValueProvider().setAge(_age.value);
                   },
                   child: const Icon(Icons.remove),
                   style: ElevatedButton.styleFrom(
@@ -48,6 +52,7 @@ class AgeSelector extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     _age.value = _age.value + 1;
+                    ValueProvider().setAge(_age.value);
                   },
                   child: const Icon(Icons.add),
                   style: ElevatedButton.styleFrom(
