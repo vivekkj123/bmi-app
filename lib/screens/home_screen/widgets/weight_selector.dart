@@ -5,6 +5,7 @@ class WeightSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ValueNotifier _weight = ValueNotifier(35);
     return Card(
       elevation: 7,
       shape: RoundedRectangleBorder(
@@ -21,15 +22,22 @@ class WeightSelector extends StatelessWidget {
               "Weight",
               style: TextStyle(fontSize: 20),
             ),
-            const Text(
-              "57",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
+            ValueListenableBuilder(
+                valueListenable: _weight,
+                builder: (ctx, newValue, _) {
+                  return Text(
+                    "${newValue.toString()} Kg",
+                    style: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold),
+                  );
+                }),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _weight.value = _weight.value - 1;
+                  },
                   child: const Icon(Icons.remove),
                   style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),
@@ -38,7 +46,9 @@ class WeightSelector extends StatelessWidget {
                       onPrimary: const Color(0xff566ee7)),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _weight.value = _weight.value + 1;
+                  },
                   child: const Icon(Icons.add),
                   style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),

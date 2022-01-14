@@ -5,6 +5,7 @@ class AgeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ValueNotifier _age = ValueNotifier(10);
     return Card(
       elevation: 7,
       shape: RoundedRectangleBorder(
@@ -21,15 +22,22 @@ class AgeSelector extends StatelessWidget {
               "Age",
               style: TextStyle(fontSize: 20),
             ),
-            const Text(
-              "27",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ValueListenableBuilder(
+              valueListenable: _age,
+              builder: (ctx, newValue, _) {
+                return Text(
+                  newValue.toString(),
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                );
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _age.value = _age.value - 1;
+                  },
                   child: const Icon(Icons.remove),
                   style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),
@@ -38,7 +46,9 @@ class AgeSelector extends StatelessWidget {
                       onPrimary: const Color(0xff566ee7)),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _age.value = _age.value + 1;
+                  },
                   child: const Icon(Icons.add),
                   style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),

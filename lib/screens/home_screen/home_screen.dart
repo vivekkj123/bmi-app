@@ -1,4 +1,5 @@
 import 'package:bmi_app/screens/home_screen/widgets/age_selector.dart';
+import 'package:bmi_app/screens/home_screen/widgets/height_selector.dart';
 import 'package:bmi_app/screens/home_screen/widgets/weight_selector.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,26 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [AgeSelector(), WeightSelector()],
+            children: const [
+              AgeSelector(),
+              WeightSelector(),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const [
+              HeightSelector(),
+            ],
+          ),
+          Material(
+            color: Colors.blue[900],
+            shape: CircleBorder(),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.favorite),
+              color: Colors.white,
+              iconSize: 40,
+            ),
           )
         ],
       ),
