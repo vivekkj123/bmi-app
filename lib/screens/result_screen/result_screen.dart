@@ -1,6 +1,7 @@
 import 'package:bmi_app/bmi_function.dart';
 import 'package:bmi_app/value_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({Key? key}) : super(key: key);
@@ -73,11 +74,15 @@ class ResultScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     color: Color.fromRGBO(85, 87, 105, 1)),
               ),
               ElevatedButton(
-                  onPressed: () {}, child: const Text("Share Results"))
+                  onPressed: () {
+                    Share.share(
+                        "Hey Friend,\n My BMI is ${bmi.toStringAsFixed(2)}, Find your BMI using this nice Application\nDownload Now: https://github.com/vivekkj123/bmi-app");
+                  },
+                  child: const Text("Share Results "))
             ],
           ),
         ),
