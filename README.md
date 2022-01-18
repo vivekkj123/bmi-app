@@ -3,9 +3,9 @@ An simple flutter application for finding your body BMI
 
 ## Screenshots 🖼️
 
-![alt text](/home/vivek/coding/flutterProjects/bmi_app/screenshots/screen_home.jpg)
+![alt text](./screenshots/screen_home.jpg)
 
-![alt text](/home/vivek/coding/flutterProjects/bmi_app/screenshots/screen_result.jpg)
+![alt text](./screenshots/screen_result.jpg)
 
 ## Downloading ⬇
 
